@@ -2,7 +2,6 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace TcpChat
@@ -22,7 +21,7 @@ namespace TcpChat
                 _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 _socket.Connect(ipPoint);
                 _socket.Blocking = false;
-                
+
 
                 Console.WriteLine(_socket.LocalEndPoint);
 
@@ -94,7 +93,7 @@ namespace TcpChat
             }
             while (_socket.Available > 0 && _socket.Available < size);
 
-            Console.WriteLine($"<{date}> {builder}");
+            if (size > 0) Console.WriteLine($"<{date}> {builder}");
         }
     }
 }
